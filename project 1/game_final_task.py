@@ -25,10 +25,8 @@ def random_predict(number:int = 1) -> int:
         if predict_number == number: break
         #корректируем диапазон поиска, "отсекая" тот интервал, в котором уже точно нет загаданного числа
         #повторяем пока не угадаем число
-        elif predict_number < number:
-            range_start = predict_number          
-        elif predict_number > number:
-            range_end = predict_number            
+        elif predict_number < number: range_start = predict_number          
+        elif predict_number > number: range_end = predict_number            
     return (count)
     
 def score_game(random_predict) -> int:
@@ -44,8 +42,7 @@ def score_game(random_predict) -> int:
     np.random.seed(1) #фиксируем для воспроизводимости
     random_array = np.random.randint(1, 101, size=(1000)) #загадали список чисел
 
-    for number in random_array:
-        count_ls.append(random_predict(number)) #угадали каждое число из списка, с помощью нашей программы. 
+    for number in random_array: count_ls.append(random_predict(number)) #угадали каждое число из списка, с помощью нашей программы. 
         #добавили в контрольный список количество попыток угадывания каждого числа
     
     score = int(np.mean(count_ls)) #вычислили среднее число попыток на основании контрольного списка
